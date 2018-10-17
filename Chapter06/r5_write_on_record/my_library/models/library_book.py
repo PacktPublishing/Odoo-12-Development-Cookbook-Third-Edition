@@ -8,6 +8,7 @@ class LibraryBook(models.Model):
     _name = 'library.book'
     name = fields.Char('Title', required=True)
     date_release = fields.Date('Release Date')
+    date_updated = fields.Datetime('Last Updated', copy=False)
     author_ids = fields.Many2many('res.partner', string='Authors')
     category_id = fields.Many2one('library.book.category', string='Category')
     state = fields.Selection([
@@ -66,11 +67,15 @@ class LibraryBook(models.Model):
         record = self.env['library.book.category'].create(parent_category_val)
         return True
 
+    @api.multi
+    def change_update_date(self):
+        self.ensure_one()
+        self.date_updated = fields.Datetime.now()
+
     @api.model
     def get_all_library_members(self):
         library_member_model = self.env['library.member']  # This is an empty recordset of model library.member
         return library_member_model.search([])
-
 
 
 class LibraryMember(models.Model):

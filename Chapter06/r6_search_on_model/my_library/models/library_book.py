@@ -1,13 +1,19 @@
 # -*- coding: utf-8 -*-
+import logging
+
 from odoo import models, fields, api
 from odoo.exceptions import UserError
 from odoo.tools.translate import _
+
+
+logger = logging.getLogger(__name__)
 
 
 class LibraryBook(models.Model):
     _name = 'library.book'
     name = fields.Char('Title', required=True)
     date_release = fields.Date('Release Date')
+    date_updated = fields.Datetime('Last Updated', copy=False)
     author_ids = fields.Many2many('res.partner', string='Authors')
     category_id = fields.Many2one('library.book.category', string='Category')
     state = fields.Selection([
@@ -64,6 +70,24 @@ class LibraryBook(models.Model):
         }
         # Total 3 records (1 parent and 2 child) will be craeted in library.book.category model
         record = self.env['library.book.category'].create(parent_category_val)
+        return True
+
+    @api.multi
+    def change_update_date(self):
+        self.ensure_one()
+        self.date_updated = fields.Datetime.now()
+
+    @api.multi
+    def find_book(self):
+        domain = [
+            '|',
+                '&', ('name', 'ilike', 'Book Name'),
+                     ('category_id.name', '=', 'Category Name'),
+                '&', ('name', 'ilike', 'Book Name 2'),
+                     ('category_id.name', '=', 'Category Name 2')
+        ]
+        books = self.search(domain)
+        logger.info('Books found: %s', books)
         return True
 
     @api.model

@@ -1,13 +1,19 @@
 # -*- coding: utf-8 -*-
+import logging
+
 from odoo import models, fields, api
 from odoo.exceptions import UserError
 from odoo.tools.translate import _
+
+
+logger = logging.getLogger(__name__)
 
 
 class LibraryBook(models.Model):
     _name = 'library.book'
     name = fields.Char('Title', required=True)
     date_release = fields.Date('Release Date')
+    date_updated = fields.Datetime('Last Updated', copy=False)
     author_ids = fields.Many2many('res.partner', string='Authors')
     category_id = fields.Many2one('library.book.category', string='Category')
     state = fields.Selection([
@@ -66,10 +72,40 @@ class LibraryBook(models.Model):
         record = self.env['library.book.category'].create(parent_category_val)
         return True
 
+    @api.multi
+    def change_update_date(self):
+        self.ensure_one()
+        self.date_updated = fields.Datetime.now()
+
+    @api.multi
+    def find_book(self):
+        domain = [
+            '|',
+                '&', ('name', 'ilike', 'Book Name'),
+                     ('category_id.name', '=', 'Category Name'),
+                '&', ('name', 'ilike', 'Book Name 2'),
+                     ('category_id.name', '=', 'Category Name 2')
+        ]
+        books = self.search(domain)
+        logger.info('Books found: %s', books)
+        return True
+
     @api.model
     def get_all_library_members(self):
         library_member_model = self.env['library.member']  # This is an empty recordset of model library.member
         return library_member_model.search([])
+
+    def filter_books(self):
+        all_books = self.search([])
+        filtered_books = self.books_with_multiple_authors(all_books)
+        logger.info('Filtered Books: %s', filtered_books)
+
+    @api.model
+    def books_with_multiple_authors(self, all_books):
+        def predicate(book):
+            if len(book.author_ids) > 1:
+                return True
+        return all_books.filtered(predicate)
 
 
 
