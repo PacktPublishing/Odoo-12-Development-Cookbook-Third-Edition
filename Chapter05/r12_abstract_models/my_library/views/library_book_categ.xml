@@ -34,25 +34,12 @@
     <!-- Tree(list) View -->
     <record id="library_book_category_view_tree" model="ir.ui.view">
         <field name="name">Library Book List</field>
-        <field name="model">library.book</field>
+        <field name="model">library.book.category</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-                <field name="date_release"/>
+                <field name="description"/>
             </tree>
-        </field>
-    </record>
-
-    <!-- Search View -->
-    <record id="library_book_view_search" model="ir.ui.view">
-        <field name="name">Library Book Search</field>
-        <field name="model">library.book</field>
-        <field name="arch" type="xml">
-            <search>
-                <field name="name"/>
-                <field name="author_ids"/>
-                <filter string="Without Authors" name="without_author" domain="[('author_ids','=',False)]"/>
-            </search>
         </field>
     </record>
 
