@@ -21,12 +21,6 @@
                         <field name="name"/>
                         <field name="description"/>
                     </group>
-                    <group>
-                        <field name="parent_id"/>
-                    </group>
-                </group>
-                <group>
-                    <field name="child_ids"/>
                 </group>
             </form>
         </field>
