@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields
+from odoo import models, fields, _
+from odoo.exceptions import UserError
 
 
 class LibraryBook(models.Model):
@@ -7,8 +8,8 @@ class LibraryBook(models.Model):
 
     name = fields.Char('Title', required=True)
     date_release = fields.Date('Release Date')
-    active = fields.Boolean(default=True)
     author_ids = fields.Many2many('res.partner', string='Authors')
+    active = fields.Boolean(default=True)
     state = fields.Selection(
         [('available', 'Available'),
          ('borrowed', 'Borrowed'),
@@ -28,5 +29,15 @@ class LibraryBook(models.Model):
     def make_lost(self):
         self.ensure_one()
         self.state = 'lost'
+        if not self.env.context.get('avoid_deactivate'):
+            self.active = False
 
-
+    def book_rent(self):
+        self.ensure_one()
+        if self.state != 'available':
+            raise UserError(_('Book is not available for renting'))
+        rent_as_superuser = self.env['library.book.rent'].sudo()
+        rent_as_superuser.create({
+            'book_id': self.id,
+            'borrower_id': self.env.user.partner_id.id,
+        })
