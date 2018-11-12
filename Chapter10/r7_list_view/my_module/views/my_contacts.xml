@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <act_window id="action_all_customers"
+        name="All customers"
+        res_model="res.partner"
+        view_mode="tree,form"
+        domain="[('customer', '=', True)]"
+        context="{'default_customer': True}"
+        limit="20"/>
+
+    <record id="tree_all_customers" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <tree decoration-bf="customer" decoration-danger="supplier" decoration-warning="customer and supplier">
+                <field name="name" />
+                <field name="customer" invisible="1" />
+                <field name="supplier" invisible="1" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_all_customers_tree" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="action_all_customers" />
+        <field name="view_id" ref="tree_all_customers" />
+        <field name="view_mode">tree</field>
+        <field name="sequence">5</field>
+    </record>
+
+    <menuitem id="menu_custom_top_level" name="My App menu" web_icon="my_module,static/description/icon.png"/>
+    <menuitem id="menu_all_customers" parent="menu_custom_top_level" action="action_all_customers" sequence="10" groups="" />
+</odoo>

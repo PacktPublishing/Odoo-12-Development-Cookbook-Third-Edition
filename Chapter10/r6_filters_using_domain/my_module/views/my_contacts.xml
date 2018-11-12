@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Activate the french language to see the effect-->
+    <record id="action_my_customers" model="ir.actions.act_window">
+        <field name="name">All my customers who don't speak French</field>
+        <field name="res_model">res.partner</field>
+        <field name="domain">
+            [('customer', '=', True), ('user_id', '=', uid), ('lang', '!=', 'fr_FR')]
+        </field>
+    </record>
+
+    <record id="action_customers_or_suppliers" model="ir.actions.act_window">
+        <field name="name">Customers or suppliers</field>
+        <field name="res_model">res.partner</field>
+        <field name="domain">['|', ('customer', '=', True), ('supplier', '=', True)]</field>
+    </record>
+
+    <menuitem id="menu_custom_top_level" name="My App menu" web_icon="my_module,static/description/icon.png"/>
+    <menuitem id="menu_my_customers" parent="menu_custom_top_level" action="action_my_customers" sequence="9" />
+    <menuitem id="menu_customers_or_suppliers" parent="menu_custom_top_level" action="action_customers_or_suppliers" sequence="10" />
+</odoo>
