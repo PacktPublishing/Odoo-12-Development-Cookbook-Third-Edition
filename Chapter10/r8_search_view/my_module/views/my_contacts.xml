@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="search_all_customers" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="category_id" filter_domain="[('category_id', 'child_of', self)]" />
+                <field name="bank_ids" widget="many2one" />
+                <filter name="suppliers" string="Suppliers" domain="[('supplier', '=', True)]" />
+            </search>
+        </field>
+    </record>
+
+    <record id="action_all_customers" model="ir.actions.act_window">
+        <field name="name">All customers</field>
+        <field name="res_model">res.partner</field>
+        <field name="domain">[('customer', '=', True)]</field>
+        <field name="search_view_id" ref="search_all_customers" />
+    </record>
+
+    <menuitem id="menu_custom_top_level" name="My App menu" web_icon="my_module,static/description/icon.png"/>
+    <menuitem id="menu_all_customers" parent="menu_custom_top_level" action="action_all_customers" sequence="10" groups="" />
+</odoo>
