@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_all_customers_kanban" model="ir.ui.view">
+        <field name="name">All customers</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name" />
+                <field name="supplier" />
+                <field name="customer" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card">
+                            <a type="open">
+                                <strong><field name="name" /> </strong>
+                            </a>
+                            <t t-if="record.supplier.raw_value or record.customer.raw_value">
+                                is
+                                <t t-if="record.customer.raw_value">
+                                    a customer
+                                    <t t-if="record.supplier.raw_value"> and </t>
+                                </t>
+                                <t t-if="record.supplier.raw_value">
+                                    a supplier
+                                </t>
+                            </t>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id='action_all_customers' model='ir.actions.act_window'>
+        <field name="name">All customers</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('customer', '=', True)]</field>
+        <field name="context">{'default_customer': True, 'kanban_view_ref': 'my_module.view_all_customers_kanban'}</field>
+        <field name="limit">20</field>
+    </record>
+
+    <menuitem id="menu_custom_top_level" name="My App menu" web_icon="my_module,static/description/icon.png"/>
+    <menuitem id="menu_all_customers" parent="menu_custom_top_level" action="action_all_customers" sequence="10" />
+</odoo>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_all_customers_form" model="ir.ui.view">
+        <field name="name">All customers</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="email"/>
+                    </group>
+                </sheet>
+                <div class="o_attachment_preview" options="{types: ['image', 'pdf'], 'order': 'desc'}" />
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id='action_all_customers' model='ir.actions.act_window'>
+        <field name="name">All customers</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('customer', '=', True)]</field>
+        <field name="context">{'default_customer': True, 'form_view_ref': 'my_module.view_all_customers_form'}</field>
+        <field name="limit">20</field>
+    </record>
+
+    <menuitem id="menu_custom_top_level" name="My App menu" web_icon="my_module,static/description/icon.png"/>
+    <menuitem id="menu_all_customers" parent="menu_custom_top_level" action="action_all_customers" sequence="10" />
+</odoo>
