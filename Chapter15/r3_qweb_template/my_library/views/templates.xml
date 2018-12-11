@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="books">
+        <t t-call="website.layout">
+            <div class="oe_structure">
+                <section class="pt32 pb32 bg-secondary oe_custom_bg">
+                    <div class="container text-center">
+                        <h1> Editable text and supports drag and drop.</h1>
+                    </div>
+                </section>
+            </div>
+
+            <div class="container">
+                <t t-foreach="books" t-as="book">
+                    <article itemscope="itemscope"
+                        itemtype="http://schema.org/Book"
+                        t-attf-class="book-#{book_parity} mt24">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 t-field="book.name"/>
+                                <t t-if="book.date_release">
+                                    <div t-field="book.date_release"
+                                        t-att-dateCreated="book.date_release"
+                                        class="text-muted"  />
+                                </t>
+                                <b class="mt8"> Authors </b>
+                                <ul>
+                                    <li t-foreach="book.author_ids" t-as="author" itemprop="author">
+                                        <t t-esc="author.name" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+                </t>
+            </div>
+
+            <section class="container mt16" contenteditable="False">
+                This is a non-editable text after the list of books.
+            </section>
+        </t>
+    </template>
+
+</odoo>
