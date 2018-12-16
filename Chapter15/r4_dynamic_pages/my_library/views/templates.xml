@@ -25,6 +25,9 @@
                                 <span t-esc="author.name" />
                             </li>
                         </ul>
+                        <a t-attf-href="/books/#{book.id}" class="btn btn-primary btn-sm">
+                            <i class="fa fa-book"/> Book Detail
+                        </a>
                     </div>
                 </div>
             </t>
@@ -41,6 +44,32 @@
     <xpath expr="//div[@class='card-body']/b" position="replace">
         <b class="mt8"> Authors (<t t-esc="len(book.author_ids)"/>) </b>
     </xpath>
+</template>
+
+<!-- Book Detail Page -->
+<template id="book_detail" name="Books Detail">
+    <t t-call="website.layout">
+        <div class="container">
+            <div class="row mt16">
+                <div class="col-5">
+                    <span t-field="book.image" t-options="{'widget': 'image', 'class': 'mx-auto d-block img-thumbnail'}"/>
+                </div>
+                <div class="offset-1 col-6">
+                    <h1 t-field="book.name"/>
+                    <t t-if="book.date_release">
+                        <div t-field="book.date_release" class="text-muted"/>
+                    </t>
+                    <b class="mt8"> Authors </b>
+                    <ul>
+                        <li t-foreach="book.author_ids" t-as="author">
+                            <span t-esc="author.name" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div t-field="book.html_description"/>
+    </t>
 </template>
 
 </odoo>

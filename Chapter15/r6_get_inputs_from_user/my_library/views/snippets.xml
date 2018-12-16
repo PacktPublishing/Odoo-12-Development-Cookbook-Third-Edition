@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+<template id="assets_frontend" inherit_id="web.assets_frontend">
+    <xpath expr="." position="inside">
+        <script src="/my_library/static/src/js/snippets.js" type="text/javascript" />
+    </xpath>
+</template>
+
+<template id="book_snippet" name="Latest Books">
+    <section class="book_list">
+        <div class="container">
+            <h2>Latest books</h2>
+            <table class="table book_snippet">
+                <tr>
+                    <th>Name</th>
+                    <th>Release date</th>
+                </tr>
+            </table>
+        </div>
+    </section>
+</template>
+
+<template id="book_snippets_options" inherit_id="website.snippets">
+    <xpath expr="//div[@id='snippet_feature']/div[hasclass('o_panel_body')]" position="inside">
+        <t t-snippet="my_library.book_snippet" t-thumbnail="/my_library/static/description/icon.png"/>
+    </xpath>
+    <xpath expr="//div[@id='snippet_options']" position="inside">
+        <div data-js="book_count"
+            data-selector="section.book_list">
+            <div class="dropdown-submenu">
+                <a tabindex="-2" href="#" class="dropdown-item">
+                    <i class="fa fa-book"/> Number of books
+                </a>
+                <div class="dropdown-menu" role="menu">
+                    <a href="#" class="dropdown-item" data-select-count="3">
+                        3
+                    </a>
+                    <a href="#" class="dropdown-item" data-select-count="5">
+                        5
+                    </a>
+                    <a href="#" class="dropdown-item" data-select-count="10">
+                        10
+                    </a>
+                    <a href="#" class="dropdown-item" data-select-count="15">
+                        15
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div data-selector=".book_snippet">
+            <div class="dropdown-submenu">
+                <a tabindex="-2" href="#" class="dropdown-item">
+                    <i class="fa fa-columns"/> Table Style
+                </a>
+                <div class="dropdown-menu" role="menu">
+                    <a href="#" class="dropdown-item" data-toggle-class="table-bordered">
+                        Bordered
+                    </a>
+                    <a href="#" class="dropdown-item" data-toggle-class="table-dark">
+                        Dark
+                    </a>
+                    <a href="#" class="dropdown-item" data-toggle-class="table-striped">
+                        Striped
+                    </a>
+                </div>
+            </div>
+        </div>
+    </xpath>
+</template>
+
+</odoo>
