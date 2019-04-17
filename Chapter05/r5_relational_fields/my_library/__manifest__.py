@@ -3,7 +3,7 @@
     'name': "My Library",  # Module title
     'summary': "Manage books easily",  # Module subtitle phrase
     'description': """Long description""",  # You can also rst format
-    'author': "Your name",
+    'author': "Parth Gajjar",
     'website': "http://www.example.com",
     'category': 'Uncategorized',
     'version': '12.0.1',

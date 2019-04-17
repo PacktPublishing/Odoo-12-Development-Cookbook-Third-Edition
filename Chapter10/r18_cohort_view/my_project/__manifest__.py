@@ -2,7 +2,7 @@
 {
     'name': "My Project",  # Module title
     'description': """Long description""",  # You can also rst format
-    'author': "Your name",
+    'author': "Parth Gajjar",
     'website': "http://www.example.com",
     'category': 'Project',
     'version': '12.0.1',

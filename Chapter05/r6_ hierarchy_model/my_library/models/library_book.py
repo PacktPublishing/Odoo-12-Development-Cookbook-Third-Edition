@@ -6,6 +6,7 @@ from odoo.addons import decimal_precision as dp
 class LibraryBook(models.Model):
     _name = 'library.book'
     _description = 'Library Book'
+
     _order = 'date_release desc, name'
 
     name = fields.Char('Title', required=True, index=True)

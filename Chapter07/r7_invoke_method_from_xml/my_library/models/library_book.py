@@ -2,6 +2,8 @@
 from odoo import models, fields, api
 from odoo.addons import decimal_precision as dp
 
+import logging
+_logger = logging.getLogger(__name__)
 
 class LibraryBook(models.Model):
     _name = 'library.book'
@@ -53,6 +55,7 @@ class LibraryBook(models.Model):
     @api.model
     def update_book_price(self):
         # NOTE: Real cases can be complex but here we just increse cost price by 10
+        _logger.info('Method update_book_price called from XML')
         all_books = self.search([])
         for book in all_books:
             book.cost_price += 10

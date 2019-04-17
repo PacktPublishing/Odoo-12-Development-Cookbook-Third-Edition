@@ -8,7 +8,7 @@
             <kanban>
                 <field name="name" />
                 <field name="supplier" />
-                <field name="customer" />
+                <field name="customer"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_card">
@@ -19,7 +19,9 @@
                                 is
                                 <t t-if="record.customer.raw_value">
                                     a customer
-                                    <t t-if="record.supplier.raw_value"> and </t>
+                                </t>
+                                <t t-if="record.customer.raw_value and record.supplier.raw_value">
+                                    and
                                 </t>
                                 <t t-if="record.supplier.raw_value">
                                     a supplier

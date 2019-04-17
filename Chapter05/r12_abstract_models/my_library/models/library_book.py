@@ -18,6 +18,7 @@ class BaseArchive(models.AbstractModel):
 class LibraryBook(models.Model):
     _name = 'library.book'
     _description = 'Library Book'
+
     _inherit = ['base.archive']
     _order = 'date_release desc, name'
 

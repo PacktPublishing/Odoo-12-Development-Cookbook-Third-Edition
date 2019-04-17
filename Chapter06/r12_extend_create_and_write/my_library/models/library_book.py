@@ -5,6 +5,8 @@ from odoo import models, fields, api
 
 class LibraryBook(models.Model):
     _name = 'library.book'
+    _description = 'Library Book'
+
     name = fields.Char('Title', required=True)
     date_release = fields.Date('Release Date')
     author_ids = fields.Many2many('res.partner', string='Authors')
@@ -30,13 +32,3 @@ class LibraryBook(models.Model):
                 )
         return super(LibraryBook, self).write(values)
 
-    @api.model
-    def fields_get(self, allfields=None, attributes=None):
-        fields = super(LibraryBook, self).fields_get(
-            allfields=allfields,
-            attributes=attributes
-        )
-        if not self.user_has_groups('my_library.group_librarian'):
-            if 'manager_remarks' in fields:
-                fields['manager_remarks']['readonly'] = True
-        return fields

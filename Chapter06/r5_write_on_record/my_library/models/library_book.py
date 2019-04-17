@@ -6,6 +6,8 @@ from odoo.tools.translate import _
 
 class LibraryBook(models.Model):
     _name = 'library.book'
+    _description = 'Library Book'
+
     name = fields.Char('Title', required=True)
     date_release = fields.Date('Release Date')
     date_updated = fields.Datetime('Last Updated', copy=False)

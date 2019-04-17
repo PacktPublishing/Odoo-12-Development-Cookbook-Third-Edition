@@ -27,8 +27,8 @@ odoo.define('my_library.snippets', function (require) {
                 method: 'search_read',
                 domain: [],
                 fields: ['name', 'date_release'],
-                sortBy: ['date_release desc'],
-                limit: rows,
+                orderBy: [{name: 'date_release', asc: false}],
+                limit: rows
             }).then(function (data) {
                 _.each(data, function (book) {
                     self.$el.append(

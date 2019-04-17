@@ -12,7 +12,7 @@
                         <field name="email"/>
                     </group>
                 </sheet>
-                <div class="o_attachment_preview" options="{types: ['image', 'pdf'], 'order': 'desc'}" />
+                <div class="o_attachment_preview" options="{'types': ['image', 'pdf'], 'order': 'desc'}" />
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers"/>
                     <field name="activity_ids" widget="mail_activity"/>

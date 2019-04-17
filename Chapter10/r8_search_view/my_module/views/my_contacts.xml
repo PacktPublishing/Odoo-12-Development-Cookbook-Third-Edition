@@ -9,6 +9,9 @@
                 <field name="category_id" filter_domain="[('category_id', 'child_of', self)]" />
                 <field name="bank_ids" widget="many2one" />
                 <filter name="suppliers" string="Suppliers" domain="[('supplier', '=', True)]" />
+                <group expand="0" string="Group By">
+                    <filter string="Country" name="country" context="{'group_by':'country_id'}"/>
+                </group>
             </search>
         </field>
     </record>

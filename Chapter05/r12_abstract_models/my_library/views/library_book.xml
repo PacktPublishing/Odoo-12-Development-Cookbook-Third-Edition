@@ -17,6 +17,9 @@
         <field name="model">library.book</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button type="object" name="do_archive" string="Toggle Archive"/>
+                </header>
                 <group>
                     <group>
                         <field name="name"/>
