@@ -49,7 +49,7 @@ With the following software and hardware list you can run all code files present
 We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](https://www.packtpub.com/sites/default/files/downloads/9781789618921_ColorImages.pdf).
 
 ### Related products
-* Odoo 12 Development Essentials - Fourth Edition [[Packt]](https://www.packtpub.com/business/odoo-12-development-essentials-fourth-edition?utm_source=github&utm_medium=repository&utm_campaign=9781789532470 ) [[Amazon]](https://www.amazon.com/dp/1789532477)
+* Odoo 12 Development Essentials - Fourth Edition [[Packt]](https://www2.packtpub.com/business/odoo-12-development-essentials-fourth-edition) [[Amazon]](https://www.amazon.com/dp/1789532477)
 
 ## Get to Know the Authors
 **Parth Gajjar**
