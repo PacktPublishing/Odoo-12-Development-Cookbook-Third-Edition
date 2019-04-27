@@ -44,25 +44,12 @@ With the following software and hardware list you can run all code files present
 | -------- | ------------------------------------ | ----------------------------------- |
 | 1-24 | Odoo 12 Community Edition | Windows, Mac OS X, and Linux (Any) |
 | 1-24 | Odoo 12 Enterprise Edition (Only required for few recipes) | Windows, Mac OS X, and Linux (Any) |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+
 
 We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](https://www.packtpub.com/sites/default/files/downloads/9781789618921_ColorImages.pdf).
 
 ### Related products
 * Odoo 12 Development Essentials - Fourth Edition [[Packt]](https://www.packtpub.com/business/odoo-12-development-essentials-fourth-edition?utm_source=github&utm_medium=repository&utm_campaign=9781789532470 ) [[Amazon]](https://www.amazon.com/dp/1789532477)
-
-*  [[Packt]]() [[Amazon]](https://www.amazon.com/dp/)
-
-*  [[Packt]]() [[Amazon]](https://www.amazon.com/dp/)
-
-*  [[Packt]]() [[Amazon]](https://www.amazon.com/dp/)
 
 ## Get to Know the Author
 **Parth Gajjar**
@@ -78,8 +65,6 @@ has been a fervent open source advocate since he came into contact with the open
 **Daniel Reis**
 has had a long career in the IT industry, most as a consultant implementing business applications in variety of sectors, and today works for Securitas, a multinational security services provider. He has been working with Odoo (formerly OpenERP) since 2010, is an active contributor to the Odoo Community Association projects, is currently a member of the board of the Odoo Community Association, and collaborates with ThinkOpen Solutions, a leading Portuguese Odoo integrator.
 
-****
-0
 
 ## Other books by the authors
 [Odoo Development Cookbook](https://www.packtpub.com/big-data-and-business-intelligence/odoo-development-cookbook?utm_source=github&utm_medium=repository&utm_campaign=9781785883644 )
