@@ -51,7 +51,7 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 ### Related products
 * Odoo 12 Development Essentials - Fourth Edition [[Packt]](https://www.packtpub.com/business/odoo-12-development-essentials-fourth-edition?utm_source=github&utm_medium=repository&utm_campaign=9781789532470 ) [[Amazon]](https://www.amazon.com/dp/1789532477)
 
-## Get to Know the Author
+## Get to Know the Authors
 **Parth Gajjar**
 is Application Engineer at Odoo and has been working on Odoo for the past 6 years. For the past year and a half, Parth has been working as a code reviewer at Odoo India. During this time, he has worked in several departments of Odoo, including offshore, migration, and research and development. During his time in research and development, he has developed several key features in Odoo, including the marketing automation module Odoo mobile app (The hybrid JavaScript Part), mobile push notification, Less/CSS editor, Domain Selector widget, and the Qweb report engine prototype. He often gives technical training to Odoo partners. Also, he handes technical interviews at Odoo India.
 
